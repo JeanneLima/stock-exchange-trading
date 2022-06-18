@@ -10,7 +10,7 @@ export class Negociacoes {
     this._negociacoes.push(negociacao);
   }
 
-  lista(): Array<Negociacao> {
-    return [...this._negociacoes]; // Através do spread operator pega cada item da lista e insere nessa nova, sendo essa lista guardada outro espaço na memória, protegendo a listagem de modificações indesejadas e só permitindo a leitura
+  lista(): ReadonlyArray<Negociacao> {
+    return this._negociacoes;
   }
 }
