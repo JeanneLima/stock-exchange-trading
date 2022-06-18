@@ -4,13 +4,13 @@ import { Negociacao } from "./negociacao.js";
 // Na lista de negociação só podem ser incluídas notifcações, nunca removidas
 
 export class Negociacoes {
-  private _negociacoes: Array<Negociacao> = []; // O Typescript tem suporte a generics, ou seja, permite que seja definidos tipos (T) que complementam o tipo primário
+  private _negociacoes: Negociacao[] = []; // O Typescript tem suporte a generics, ou seja, permite que seja definidos tipos (<T>) que complementam o tipo primário
 
   adiciona(negociacao: Negociacao): void {
     this._negociacoes.push(negociacao);
   }
 
-  lista(): ReadonlyArray<Negociacao> {
+  lista(): readonly Negociacao[] {
     return this._negociacoes;
   }
 }
