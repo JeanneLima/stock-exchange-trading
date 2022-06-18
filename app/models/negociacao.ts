@@ -1,10 +1,10 @@
-// Modelagem - Regras de negocio
-// Toda negociacao nao pode ser modificada depois de criada
-// Toda negociacao obrigatoriamente tem uma data, quantidade e valor
-// Toda negociacao tem seu volume calculado multiplicando-se a quantidade negociada no dia pelo valor negociado
+// Modelagem - Regras de negócio
+// Toda negociação não pode ser modificada depois de criada
+// Toda negociação obrigatoriamente tem uma data, quantidade e valor
+// Toda negociação tem seu volume calculado multiplicando-se a quantidade negociada no dia pelo valor negociado
 
 export class Negociacao {
-  // #data; // atributo de classe privado com Javascript
+  // #data; // propriedade de classe privado com Javascript
   // #quantidade;
   // #valor;
   private _data: Date;
@@ -17,21 +17,21 @@ export class Negociacao {
     this._valor = valor;
   }
 
-  // Implementacao dos getters 
-  // Estes sao como metodos que conseguem acessar os atributos privados da classe e que permitem somente leitura dos atributos da mesma, dando acesso como se fossem propriedades de classe
-  get data() {
+  // Implementação dos getters 
+  // Estes são como métodos que conseguem acessar as propriedade privados da classe e que permitem somente leitura das propriedades da mesma, dando acesso como se fossem propriedades de classe
+  get data(): Date {
     return this._data;
   }
 
-  get quantidade() {
+  get quantidade(): number {
     return this._quantidade;
   }
 
-  get valor() {
+  get valor(): number {
     return this._valor;
   }
 
-  get volume() {
+  get volume(): number {
     return this._quantidade * this._valor;
   }
 }
