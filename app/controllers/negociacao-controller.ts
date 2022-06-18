@@ -1,10 +1,12 @@
 // Controller é uma classe a ser instanciada que trabalha na ligação/comunicação entre as interações do usuário e a criação de models
 import { Negociacao } from "../models/negociacao.js";
+import { Negociacoes } from "../models/negociacoes.js";
 
 export class NegociacaoController {
   private _inputData: HTMLInputElement;
   private _inputQuantidade: HTMLInputElement;
   private _inputValor: HTMLInputElement;
+  private _negociacoes: Negociacoes = new Negociacoes();
 
   constructor() {
     this._inputData = document.querySelector("#data");
@@ -14,7 +16,9 @@ export class NegociacaoController {
 
   adiciona(): void {
     const negociacao = this.criaNegociacao();
-    console.log(negociacao);
+    this._negociacoes.adiciona(negociacao);
+    this._negociacoes.lista().pop();
+    console.log(this._negociacoes.lista());
     this.limparFormulario();
   }
 
