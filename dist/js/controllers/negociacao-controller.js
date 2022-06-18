@@ -7,7 +7,11 @@ export class NegociacaoController {
         this._inputValor = document.querySelector("#valor");
     }
     adiciona() {
-        const negociacao = new Negociacao(this._inputData.value, this._inputQuantidade.value, this._inputValor.value);
+        const exp = /-/g; // Expressão regular para encontrar todos os hífens
+        const data = new Date(this._inputData.value.replace(exp, ",")); // Converte todos os hifens em vírgula
+        const quantidade = parseInt(this._inputQuantidade.value);
+        const valor = parseFloat(this._inputValor.value);
+        const negociacao = new Negociacao(data, quantidade, valor);
         console.log(negociacao);
     }
 }

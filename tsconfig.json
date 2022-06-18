@@ -2,7 +2,8 @@
   "compilerOptions": { // Opções de compilação
     "outDir": "dist/js", // Diretório onde gravar os arquivos Javascript gerados a partir dos arquivos Typescript
     "target":"ES6", // Versão do ECMAScript a ser aplicada na transpilação dos códigos Typescript
-    "noEmitOnError": true // Não gera arquivo Javascript enquanto houver erros no arquivo Typescript
+    "noEmitOnError": true, // Não gera arquivo Javascript enquanto houver erros no arquivo Typescript
+    "noImplicitAny": true // Não deixa o Typescript atribuir automaticamente o tipo implícitio any
   },
   "include": ["app/**/*"] // Diretório dos arquivos Typescript a serem transpilados
 }
