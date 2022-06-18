@@ -5,26 +5,15 @@
 
 export class Negociacao {
   constructor(
-    private _data: Date,
-    private _quantidade: number,
-    private _valor: number
+    public readonly data: Date,
+    public readonly quantidade: number,
+    public readonly valor: number
   ) {} // Se no construtor for colocado explicitamente os modificadores de acesso private ou public, o Typescript vai por trás criar propriedades da classe com o mesmo nome dos parâmetros do construtor e fazer as devidas atribuições
 
   // Implementação dos getters 
   // Estes são como métodos que conseguem acessar as propriedade privados da classe e que permitem somente leitura das propriedades da mesma, dando acesso como se fossem propriedades de classe
-  get data(): Date {
-    return this._data;
-  }
-
-  get quantidade(): number {
-    return this._quantidade;
-  }
-
-  get valor(): number {
-    return this._valor;
-  }
-
+  // E getters são mais vantajosos quando se deseja inserir alguma lógica extra no momento da leitura, senão existe a opção usar a versão simplificada com public readonly na declaração no próprio construtor
   get volume(): number {
-    return this._quantidade * this._valor;
+    return this.quantidade * this.valor;
   }
 }
