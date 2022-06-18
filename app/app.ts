@@ -11,4 +11,4 @@ const negociacao = new Negociacao(new Date(), 10, 100);
 
 // Teste do funcionamento dos getters
 // negociacao.quantidade = 10000; // Da erro no console, pois nao se pode mudar o valor de um getter
-console.log(negociacao.volume); // retorna undefined quando nao existe um getter, pois e um atributo privado da classe
+// console.log(negociacao.volume); // retorna undefined quando nao existe um getter, pois e um atributo privado da classe
