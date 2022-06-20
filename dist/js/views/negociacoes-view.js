@@ -3,7 +3,7 @@ export class NegociacoesView {
         this._elemento = document.querySelector(seletor);
     }
     // Declara o template da view
-    template() {
+    template(model) {
         return `
       <table class="table table-hover table-bordered">
         <thead>
@@ -14,12 +14,23 @@ export class NegociacoesView {
           </tr>
         </thead>
         <tbody>
+        ${model.lista().map(negociacao => {
+            return `
+            <tr>
+              <td>${negociacao.data}</td>
+              <td>${negociacao.quantidade}</td>
+              <td>${negociacao.valor}</td>
+            </tr>
+          `;
+        }).join("")}
         </tbody>
       </table>
     `;
     }
     // Renderiza o template no elemento capturado da DOM
-    update() {
-        this._elemento.innerHTML = this.template();
+    update(model) {
+        const template = this.template(model);
+        console.log(template);
+        this._elemento.innerHTML = template;
     }
 }
