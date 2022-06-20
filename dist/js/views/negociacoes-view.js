@@ -30,7 +30,6 @@ export class NegociacoesView {
     // Renderiza o template no elemento capturado da DOM
     update(model) {
         const template = this.template(model);
-        console.log(template);
         this._elemento.innerHTML = template;
     }
 }
