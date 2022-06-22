@@ -1,10 +1,8 @@
+// Torna em classe abstrata (ou seja, não pode ser instanciada, só utilizada por meio de herança)
+// E utiliza Generics para deixar os parâmetros dos métodos com tipos a serem sobrescritos na herança 
 export class View {
     constructor(seletor) {
         this._elemento = document.querySelector(seletor);
-    }
-    // Declara o template da view
-    template(model) {
-        throw new Error("Classe filha precisa implementar o método template.");
     }
     // Renderiza o template no elemento capturado da DOM 
     // Método que tem uma implementação default a ser sobrescita na herança
