@@ -14,7 +14,7 @@ export abstract class View<T> {
 
   // Renderiza o template no elemento capturado da DOM 
   // Método que tem uma implementação default a ser sobrescita na herança
-  update(model: T): void {
+  public update(model: T): void {
     const template = this.template(model);
     this._elemento.innerHTML = template;
   }
