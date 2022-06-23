@@ -11,6 +11,8 @@ export class NegociacaoController {
   private _negociacoes: Negociacoes = new Negociacoes();
   private _negociacoesView = new NegociacoesView("#negociacoesView");
   private _mensagemView = new MensagemView("#mensagemView");
+  private readonly _SABADO = 6;
+  private readonly _DOMINGO = 0;
 
   constructor() {
     this._inputData = document.querySelector("#data");
@@ -40,16 +42,22 @@ export class NegociacaoController {
     this._inputData.focus();
   }
 
+  private _eDiaUtil(data: Date) {
+    return data.getDay() > this._DOMINGO && data.getDay() < this._SABADO;
+  }
+
   public adiciona(): void {
     const negociacao = this._criaNegociacao();
+
     // Somente negociacoes feitas em dias úteis podem ser cadastradas
-    if (negociacao.data.getDay() > 0 && negociacao.data.getDay() < 6) {
-      // negociacao.data.setDate(12); // Esse código altera o valor da propriedade data, pois o readonly apenas trata a permissão leitura quando se tenta fazer reatribuição, ou seja, só não deixaria que a modificação fosse feita se usado o =, o mesmo acontece com getters e para resolver somente aplicando os conceitos da programação defensiva
-      this._negociacoes.adiciona(negociacao);
-      this._limparFormulario();
-      this._atualizaView();
-    } else {
-      this._mensagemView.update("Apenas negociações em dias úteis são aceitas.")
+    if (!this._eDiaUtil(negociacao.data)) {
+      this._mensagemView.update("Apenas negociações em dias úteis são aceitas.");
+      return;
     }
+      
+    // negociacao.data.setDate(12); // Esse código altera o valor da propriedade data, pois o readonly apenas trata a permissão leitura quando se tenta fazer reatribuição, ou seja, só não deixaria que a modificação fosse feita se usado o =, o mesmo acontece com getters e para resolver somente aplicando os conceitos da programação defensiva
+    this._negociacoes.adiciona(negociacao);
+    this._limparFormulario();
+    this._atualizaView();
   }
 }
