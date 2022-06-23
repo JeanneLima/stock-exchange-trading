@@ -1,4 +1,5 @@
 // Controller é uma classe a ser instanciada que trabalha na ligação/comunicação entre as interações do usuário e a criação de models
+import { DiasDaSemana } from "../enums/dias-da-semana.js";
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
 import { MensagemView } from "../views/mensagem-view.js";
@@ -11,8 +12,6 @@ export class NegociacaoController {
   private _negociacoes: Negociacoes = new Negociacoes();
   private _negociacoesView = new NegociacoesView("#negociacoesView");
   private _mensagemView = new MensagemView("#mensagemView");
-  private readonly _SABADO = 6;
-  private readonly _DOMINGO = 0;
 
   constructor() {
     this._inputData = document.querySelector("#data");
@@ -43,7 +42,7 @@ export class NegociacaoController {
   }
 
   private _eDiaUtil(data: Date) {
-    return data.getDay() > this._DOMINGO && data.getDay() < this._SABADO;
+    return data.getDay() > DiasDaSemana.DOMINGO && data.getDay() < DiasDaSemana.SABADO;
   }
 
   public adiciona(): void {
