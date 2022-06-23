@@ -10,7 +10,7 @@ export abstract class View<T> {
 
   // Toda classe abstrata pode ter nenhum ou mais métodos abstratos (aqueles cuja a classe pai não sabe como vai ser implementado, só o filho na herança (como o caso abaixo)
   // Declara o template da view
-  abstract template(model: T): string;
+  protected abstract template(model: T): string;
 
   // Renderiza o template no elemento capturado da DOM 
   // Método que tem uma implementação default a ser sobrescita na herança
