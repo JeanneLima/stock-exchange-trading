@@ -6,11 +6,11 @@ import { Negociacao } from "./negociacao.js";
 export class Negociacoes {
   private _negociacoes: Negociacao[] = []; // O Typescript tem suporte a generics, ou seja, permite que seja definidos tipos (<T>) que complementam o tipo primário
 
-  adiciona(negociacao: Negociacao): void {
+  public adiciona(negociacao: Negociacao): void {
     this._negociacoes.push(negociacao);
   }
 
-  lista(): readonly Negociacao[] {
+  public lista(): readonly Negociacao[] {
     return this._negociacoes;
   }
 }
