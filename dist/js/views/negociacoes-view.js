@@ -1,5 +1,8 @@
 import { View } from "./view.js";
 export class NegociacoesView extends View {
+    formatar(data) {
+        return new Intl.DateTimeFormat().format(data);
+    }
     // Declara o template da view
     template(model) {
         return `
@@ -15,7 +18,7 @@ export class NegociacoesView extends View {
         ${model.lista().map(negociacao => {
             return `
             <tr>
-              <td>${new Intl.DateTimeFormat().format(negociacao.data)}</td>
+              <td>${this.formatar(negociacao.data)}</td>
               <td>${negociacao.quantidade}</td>
               <td>${negociacao.valor}</td>
             </tr>
