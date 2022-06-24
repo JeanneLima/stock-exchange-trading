@@ -25,15 +25,6 @@ export class NegociacaoController {
     this._mensagemView.update("Negociação adicionada com sucesso!");
   }
 
-  private _criaNegociacao(): Negociacao {
-    const exp = /-/g; // Expressão regular para encontrar todos os hífens
-    const data = new Date(this._inputData.value.replace(exp, ",")); // Converte todos os hifens em vírgula para criar um objeto Date a partir de string com ano, mês e dia separados por vírgula
-    const quantidade = parseInt(this._inputQuantidade.value);
-    const valor = parseFloat(this._inputValor.value);
-    
-    return new Negociacao(data, quantidade, valor);
-  }
-
   private _limparFormulario(): void {
     this._inputData.value = "";
     this._inputQuantidade.value = "";
@@ -46,7 +37,11 @@ export class NegociacaoController {
   }
 
   public adiciona(): void {
-    const negociacao = this._criaNegociacao();
+    const negociacao = Negociacao.criaDe(
+      this._inputData.value,
+      this._inputQuantidade.value,
+      this._inputValor.value,
+    );
 
     // Somente negociacoes feitas em dias úteis podem ser cadastradas
     if (!this._eDiaUtil(negociacao.data)) {
