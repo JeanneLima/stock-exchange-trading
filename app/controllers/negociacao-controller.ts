@@ -14,9 +14,9 @@ export class NegociacaoController {
   private _mensagemView = new MensagemView("#mensagemView", true);
 
   constructor() {
-    this._inputData = document.querySelector("#data");
-    this._inputQuantidade = document.querySelector("#quantidade");
-    this._inputValor = document.querySelector("#valor");
+    this._inputData = document.querySelector("#data") as HTMLInputElement; // Com a utilização do "as" (casting explícito) está se transformando o valor em HTMLInputElement independente do que estiver retornando; poderia também ser representado como <HTMLInputElement>document.querySelector("#data")
+    this._inputQuantidade = document.querySelector("#quantidade") as HTMLInputElement;
+    this._inputValor = document.querySelector("#valor") as HTMLInputElement;
     this._negociacoesView.update(this._negociacoes);
   }
 
