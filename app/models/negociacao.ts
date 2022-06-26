@@ -32,4 +32,15 @@ export class Negociacao {
   get volume(): number {
     return this._quantidade * this._valor;
   }
+
+  // Como todo método estático, é um método que pode ser chamado diretamente (e somente) da classe ao invés de ser necessário criar uma instância antes ao tentar acessá-lo
+  // Além disso, devem ser sempre public para que se consiga acessá-los em qualquer parte do código onde se tenha a utilização da classe
+  public static criaDe(dataString: string, quantidadeString: string, valorString: string): Negociacao {
+    const exp = /-/g; // Expressão regular para encontrar todos os hífens
+    const data = new Date(dataString.replace(exp, ",")); // Converte todos os hifens em vírgula para criar um objeto Date a partir de string com ano, mês e dia separados por vírgula
+    const quantidade = parseInt(quantidadeString);
+    const valor = parseFloat(valorString);
+    
+    return new Negociacao(data, quantidade, valor);
+  }
 }
