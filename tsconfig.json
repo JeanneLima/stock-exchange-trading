@@ -3,7 +3,9 @@
     "outDir": "dist/js", // Diretório onde gravar os arquivos Javascript gerados a partir dos arquivos Typescript
     "target":"ES6", // Versão do ECMAScript a ser aplicada na transpilação dos códigos Typescript
     "noEmitOnError": true, // Não gera arquivo Javascript enquanto houver erros no arquivo Typescript
-    "noImplicitAny": true // Não deixa o Typescript atribuir automaticamente o tipo implícitio any
+    "noImplicitAny": true, // Não deixa o Typescript atribuir automaticamente o tipo implícitio any
+    "removeComments": true, // Remove comentários no momento de compilação
+    "strictNullChecks": true // Para de assumir implicitamente o tipo null para todos os tipos da aplicação e se tona necessário declarar explicitamente e tratar todos os casos onde null é permitido como valor
   },
   "include": ["app/**/*"] // Diretório dos arquivos Typescript a serem transpilados
 }

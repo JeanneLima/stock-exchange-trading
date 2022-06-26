@@ -3,7 +3,6 @@ export class NegociacoesView extends View {
     formatar(data) {
         return new Intl.DateTimeFormat().format(data);
     }
-    // Declara o template da view
     template(model) {
         return `
       <table class="table table-hover table-bordered">

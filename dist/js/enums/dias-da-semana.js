@@ -1,6 +1,3 @@
-// Enum é um namespace que define valores de constantes
-// Por padrão do Typescript um enumeration sempre começa do 0 e é sempre leitura somente
-// Mas é bom declarar o valor explicitamente para que a ordem não cause erros caso seja alterada
 export var DiasDaSemana;
 (function (DiasDaSemana) {
     DiasDaSemana[DiasDaSemana["DOMINGO"] = 0] = "DOMINGO";
