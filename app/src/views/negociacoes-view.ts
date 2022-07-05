@@ -1,3 +1,4 @@
+import { escapar } from "../decorators/escapar.js";
 import { Negociacoes } from "../models/negociacoes.js";
 import { View } from "./view.js";
 
@@ -7,6 +8,7 @@ export class NegociacoesView extends View<Negociacoes> {
   }
 
   // Declara o template da view
+  @escapar
   protected template(model: Negociacoes): string {
     return  `
       <table class="table table-hover table-bordered">

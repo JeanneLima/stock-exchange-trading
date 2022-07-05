@@ -1,4 +1,5 @@
 // Controller é uma classe a ser instanciada que trabalha na ligação/comunicação entre as interações do usuário e a criação de models
+import { inspecionar } from "../decorators/inspecionar.js";
 import { logarTempoDeExecucao } from "../decorators/logar-tempo-de-execucao.js";
 import { DiasDaSemana } from "../enums/dias-da-semana.js";
 import { Negociacao } from "../models/negociacao.js";
@@ -11,8 +12,8 @@ export class NegociacaoController {
   private _inputQuantidade: HTMLInputElement;
   private _inputValor: HTMLInputElement;
   private _negociacoes: Negociacoes = new Negociacoes();
-  private _negociacoesView = new NegociacoesView("#negociacoesView", true);
-  private _mensagemView = new MensagemView("#mensagemView", true);
+  private _negociacoesView = new NegociacoesView("#negociacoesView");
+  private _mensagemView = new MensagemView("#mensagemView");
 
   constructor() {
     this._inputData = document.querySelector("#data") as HTMLInputElement; // Com a utilização do "as" (casting explícito) está se transformando o valor em HTMLInputElement independente do que estiver retornando; poderia também ser representado como <HTMLInputElement>document.querySelector("#data")
@@ -39,6 +40,7 @@ export class NegociacaoController {
 
   // Chama o decorator sempre utilizando @ no início
   @logarTempoDeExecucao()
+  @inspecionar
   public adiciona(): void {
     const negociacao = Negociacao.criaDe(
       
