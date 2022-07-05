@@ -28,7 +28,7 @@ export abstract class View<T> {
     // Renderiza o template no elemento capturado da DOM 
     // Método que tem uma implementação default a ser sobrescita na herança
     @logarTempoDeExecucao(true)
-    @inspecionar()
+    @inspecionar
     public atualiza(model: T): void {
       let template = this.template(model);
   

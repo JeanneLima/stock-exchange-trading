@@ -1,5 +1,7 @@
 // Decorator é um tipo especial de declaração no formato de função que permite isolar uma lógica e reaproveitá-la
 // a fim de adicionar responsabilidades dinamicamente a uma declaração de classe, método, acessador, propriedade ou parâmetro
+// E apenas decorators que recebem parâmetros precisam de uma função externa 
+// (diferentemente do decorator inpecionar, por exemplo)
 
 // Teste de performance
 export function logarTempoDeExecucao(emSegundos: boolean = false) {

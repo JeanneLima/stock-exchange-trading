@@ -40,7 +40,7 @@ export class NegociacaoController {
 
   // Chama o decorator sempre utilizando @ no início
   @logarTempoDeExecucao()
-  @inspecionar()
+  @inspecionar
   public adiciona(): void {
     const negociacao = Negociacao.criaDe(
       
