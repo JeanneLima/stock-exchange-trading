@@ -1,3 +1,5 @@
+import { logarTempoDeExecucao } from "../decorators/logar-tempo-de-execucao.js";
+
 // Torna em classe abstrata (ou seja, não pode ser instanciada, só utilizada por meio de herança)
 // E utiliza Generics para deixar os parâmetros dos métodos com tipos a serem sobrescritos na herança 
 export abstract class View<T> {
@@ -24,7 +26,8 @@ export abstract class View<T> {
   
     // Renderiza o template no elemento capturado da DOM 
     // Método que tem uma implementação default a ser sobrescita na herança
-    public update(model: T): void {
+    @logarTempoDeExecucao()
+    public atualiza(model: T): void {
       let template = this.template(model);
   
       if (this._escapar) {

@@ -1,3 +1,10 @@
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+import { logarTempoDeExecucao } from "../decorators/logar-tempo-de-execucao.js";
 import { DiasDaSemana } from "../enums/dias-da-semana.js";
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
@@ -11,11 +18,11 @@ export class NegociacaoController {
         this._inputData = document.querySelector("#data");
         this._inputQuantidade = document.querySelector("#quantidade");
         this._inputValor = document.querySelector("#valor");
-        this._negociacoesView.update(this._negociacoes);
+        this._negociacoesView.atualiza(this._negociacoes);
     }
     _atualizaView() {
-        this._negociacoesView.update(this._negociacoes);
-        this._mensagemView.update("Negociação adicionada com sucesso!");
+        this._negociacoesView.atualiza(this._negociacoes);
+        this._mensagemView.atualiza("Negociação adicionada com sucesso!");
     }
     _limparFormulario() {
         this._inputData.value = "";
@@ -29,7 +36,7 @@ export class NegociacaoController {
     adiciona() {
         const negociacao = Negociacao.criaDe(this._inputData.value, this._inputQuantidade.value, this._inputValor.value);
         if (!this._eDiaUtil(negociacao.data)) {
-            this._mensagemView.update("Apenas negociações em dias úteis são aceitas.");
+            this._mensagemView.atualiza("Apenas negociações em dias úteis são aceitas.");
             return;
         }
         this._negociacoes.adiciona(negociacao);
@@ -37,3 +44,6 @@ export class NegociacaoController {
         this._atualizaView();
     }
 }
+__decorate([
+    logarTempoDeExecucao()
+], NegociacaoController.prototype, "adiciona", null);
