@@ -26,7 +26,7 @@ export function logarTempoDeExecucao(emSegundos: boolean = false) {
       const momentoFinal = performance.now();
 
       console.log(`${propertyKey}, tempo de execução: ${(momentoFinal - momentoInicial)/divisor} ${unidade}`);
-      retorno
+      return retorno;
     }
 
     return descriptor;

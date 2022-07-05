@@ -1,3 +1,4 @@
+import { inspecionar } from "../decorators/inspecionar.js";
 import { logarTempoDeExecucao } from "../decorators/logar-tempo-de-execucao.js";
 
 // Torna em classe abstrata (ou seja, não pode ser instanciada, só utilizada por meio de herança)
@@ -27,6 +28,7 @@ export abstract class View<T> {
     // Renderiza o template no elemento capturado da DOM 
     // Método que tem uma implementação default a ser sobrescita na herança
     @logarTempoDeExecucao(true)
+    @inspecionar()
     public atualiza(model: T): void {
       let template = this.template(model);
   
