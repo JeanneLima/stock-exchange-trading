@@ -2,11 +2,14 @@
 // É aplicado assim que a classe é declarada
 export function injetarDoDOM(seletor: string) {
   return function(target: any, propertyKey: string) {
-    console.log(`Modifica o prototype ${target.constructor.name} e adiciona getter para a propriedade ${propertyKey}`);
-    
+    // console.log(`Modifica o prototype ${target.constructor.name} e adiciona getter para a propriedade ${propertyKey}`);
+    let elemento: HTMLElement | null = null;
     const getter = function() {
-      const elemento = document.querySelector(seletor);
-      console.log(`Buscando elemento do DOM com o seletor ${seletor} para injetar em ${propertyKey}`);
+      if (!elemento) {
+        elemento = <HTMLElement>document.querySelector(seletor); // Faz casting através <HTMLElement>, também poderia ser através da utilização do "as" (casting explícito); em ambos se assume o tipo como um HTMLInputElement independente do que estiver retornando
+        // console.log(`Buscando elemento do DOM com o seletor ${seletor} para injetar em ${propertyKey}`);
+      }
+
       return elemento;
     }
 
