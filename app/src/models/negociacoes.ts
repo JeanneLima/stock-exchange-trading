@@ -1,9 +1,10 @@
+import { Imprimivel } from "../utils/imprimivel.js";
 import { Negociacao } from "./negociacao.js";
 
 // Modelagem - Regras de negócio
 // Na lista de negociação só podem ser incluídas notifcações, nunca removidas
 
-export class Negociacoes {
+export class Negociacoes extends Imprimivel {
   private _negociacoes: Negociacao[] = []; // O Typescript tem suporte a generics, ou seja, permite que seja definidos tipos (<T>) que complementam o tipo primário
 
   public adiciona(negociacao: Negociacao): void {
@@ -12,5 +13,9 @@ export class Negociacoes {
 
   public lista(): readonly Negociacao[] {
     return this._negociacoes;
+  }
+
+  public paraTexto(): string {
+    return JSON.stringify(this._negociacoes, null, 2);
   }
 }

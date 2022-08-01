@@ -1,5 +1,7 @@
-export class Negociacao {
+import { Imprimivel } from "../utils/imprimivel.js";
+export class Negociacao extends Imprimivel {
     constructor(_data, _quantidade, _valor) {
+        super();
         this._data = _data;
         this._quantidade = _quantidade;
         this._valor = _valor;
@@ -25,5 +27,12 @@ export class Negociacao {
         const quantidade = parseInt(quantidadeString);
         const valor = parseFloat(valorString);
         return new Negociacao(data, quantidade, valor);
+    }
+    paraTexto() {
+        return `
+        Data: ${this.data},
+        Quantidade: ${this.quantidade},
+        Valor: ${this.valor},
+      `;
     }
 }

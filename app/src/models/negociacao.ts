@@ -3,12 +3,16 @@
 // Toda negociação obrigatoriamente tem uma data, quantidade e valor
 // Toda negociação tem seu volume calculado multiplicando-se a quantidade negociada no dia pelo valor negociado
 
-export class Negociacao {
+import { Imprimivel } from "../utils/imprimivel.js";
+
+export class Negociacao extends Imprimivel {
     constructor(
       private _data: Date,
       private _quantidade: number,
       private _valor: number
-    ) {} // Se no construtor for colocado explicitamente os modificadores de acesso private ou public, o Typescript vai por trás criar propriedades da classe com o mesmo nome dos parâmetros do construtor e fazer as devidas atribuições
+    ) {
+      super(); // chama o constructor original (da classe Imprimivel)
+    } // Se no construtor for colocado explicitamente os modificadores de acesso private ou public, o Typescript vai por trás criar propriedades da classe com o mesmo nome dos parâmetros do construtor e fazer as devidas atribuições
   
     // Implementação dos getters 
     // Estes são como métodos que conseguem acessar as propriedade privados da classe e que permitem somente leitura das propriedades da mesma, dando acesso como se fossem propriedades de classe
@@ -42,5 +46,13 @@ export class Negociacao {
       const valor = parseFloat(valorString);
       
       return new Negociacao(data, quantidade, valor);
+    }
+
+    public paraTexto(): string {
+      return `
+        Data: ${this.data},
+        Quantidade: ${this.quantidade},
+        Valor: ${this.valor},
+      `;
     }
   }
